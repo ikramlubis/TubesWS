@@ -1,41 +1,38 @@
 <?php
-    require_once( "sparqllib.php" );
+    require ('vendor/autoload.php');
 
-    $dbpedia_endpoint = sparql_connect('https://dbpedia.org/sparql');
+    $sparql_endpoint = 'https://dbpedia.org/sparql';
+    $sparql = new \EasyRdf\Sparql\Client($sparql_endpoint);
 
-    sparql_ns( "dbp","http://dbpedia.org/property/" );
-    sparql_ns( "dbo","http://dbpedia.org/ontology/" );
-    sparql_ns( "dbr","http://dbpedia.org/resource/" );
+   \EasyRdf\RdfNamespace::set( 'dbp','http://dbpedia.org/property/' );
+   \EasyRdf\RdfNamespace::set( 'dbo','http://dbpedia.org/ontology/' );
+   \EasyRdf\RdfNamespace::set( 'dbr','http://dbpedia.org/resource/' );
+   \EasyRdf\RdfNamespace::set( 'rdf','http://www.w3.org/1999/02/22-rdf-syntax-ns#' );
+   \EasyRdf\RdfNamespace::set( 'rdfs','http://www.w3.org/2000/01/rdf-schema#' );
+   \EasyRdf\RdfNamespace::set( 'xsd','http://www.w3.org/2001/XMLSchema#' );
 
-    $query = '
-        select distinct ?film ?runtime ?director where {
-        ?film rdf:type dbo:Film.
-        ?film dbo:runtime ?runtime.
-        ?film dbo:director ?director.
-        ?film dbo:director dbr:Robert_Zemeckis.
-        Filter(?runtime > 5280).
-    }';
+    $query = "
+        Select * WHERE {
+        ?hewan rdfs:label 'Komodo dragon'@en.
+        ?hewan dbo:abstract ?deskripsi.
+        ?hewan dbo:thumbnail ?gambar.
+        FILTER( LANG (?deskripsi) = 'en')
+        }";
 
-    $result = sparql_query($query);
-    $fields = sparql_field_array( $result );
+    $result = $sparql->query($query);
+    
+    $detail = [];
+    foreach ( $result as $row) {
+        $detail = [
+            'deskripsi' => $row->deskripsi, //Deskripsi Komodo
+            'gambar' => $row->gambar , //Gambar Komodo
+        ];
 
-    echo "<table class='example_table'>";
-    echo "<tr>";
-    foreach( $fields as $field)
-    {
-        echo "<th>$field</th>";
+        break;
     }
-    echo "</tr>";
 
-    while($row = sparql_fetch_array( $result ) )
-    {
-        echo "<tr>";
-        foreach( $fields as $field )
-        {
-            echo "<td>$row[$field]</td>";
-        }
+    echo $detail['deskripsi'];
+    echo "<br>";
+    echo "<img src=".$detail['gambar'].">"
 
-        echo "</tr>";
-    }
-    echo "</table>";
 ?>

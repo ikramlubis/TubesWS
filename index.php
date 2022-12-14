@@ -1,6 +1,5 @@
-<?php 
-
-    require_once("sparqllib.php");
+<?php
+    require_once( "sparqllib.php" );
 
     $dbpedia_endpoint = sparql_connect('https://dbpedia.org/sparql');
 
@@ -8,7 +7,8 @@
     sparql_ns( "dbo","http://dbpedia.org/ontology/" );
     sparql_ns( "dbr","http://dbpedia.org/resource/" );
 
-    $query = 'select distinct ?film ?runtime ?director where {
+    $query = '
+        select distinct ?film ?runtime ?director where {
         ?film rdf:type dbo:Film.
         ?film dbo:runtime ?runtime.
         ?film dbo:director ?director.
@@ -17,21 +17,20 @@
     }';
 
     $result = sparql_query($query);
-    $fields = sparql_field_array($result);
-    var_dump($result);
+    $fields = sparql_field_array( $result );
 
     echo "<table class='example_table'>";
     echo "<tr>";
-    foreach($fields as $field)
+    foreach( $fields as $field)
     {
         echo "<th>$field</th>";
     }
     echo "</tr>";
 
-    while($row = sparql_fetch_array($result))
+    while($row = sparql_fetch_array( $result ) )
     {
         echo "<tr>";
-        foreach($fields as $field)
+        foreach( $fields as $field )
         {
             echo "<td>$row[$field]</td>";
         }

@@ -31,8 +31,39 @@
         break;
     }
 
-    echo $detail['deskripsi'];
+    echo $detail['deskripsi']; //Memanggil Deskripsi Komodo
     echo "<br>";
-    echo "<img src=".$detail['gambar'].">"
+    echo "<img src=".$detail['gambar'].">" //Memanggil gambar komodo
 
 ?>
+<!DOCTYPE html>
+<html>
+<head>
+    <!--Setting leaflet.css-->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"/> 
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+    <!----------------------->
+    <style>
+        #map {
+            width: 300px;
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+<div id="map"></div>
+<script>
+    //------------------------------------Inisialisasi Mapbox------------------------------------
+
+    var map = L.map('map').setView([51.5, -0.09], 18);
+
+    L.tileLayer('https://api.maptiler.com/maps/streets-v2/{z}/{x}/{y}.png?key=R502YF4wURp0CyIf120D', {
+        attribution:'<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>',
+    }).addTo(map);
+
+    var marker = L.marker([51.5, -0.09]).addTo(map);
+
+    //-------------------------------------------------------------------------------------------
+</script>
+</body>
+</html>

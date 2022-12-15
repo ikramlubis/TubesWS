@@ -4,10 +4,6 @@ require 'vendor/autoload.php';
 //-------------------------------Inisialisasi arah sparql untuk dbpedia akan dijalankan--------------------
 $sparql_endpoint = 'https://dbpedia.org/sparql';
 $sparql_dbpedia = new \EasyRdf\Sparql\Client($sparql_endpoint);
-//-------------------------------Inisialisasi menggunakan rdf langsung dari filenya-----------------------
-$uri_rdf = 'http://localhost/TubesWS/Komodo.rdf';
-$data = \EasyRdf\Graph::newAndLoad($uri_rdf);
-$doc = $data->primaryTopic();
 //-------------------------------Inisialisasi arah sparql untuk rdf (jena fuseki) akan dijalankan----------
 $sparql_jena = new \EasyRdf\Sparql\Client('http://localhost:3030/komodo/query');
 //-------------------------------Setting namespace--------------------------------------------------------

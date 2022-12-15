@@ -7,6 +7,12 @@ xmlns:dbr="http://dbpedia.org/resource/"
 xmlns:dbp="http://dbpedia.org/property/"
 xmlns:geo="http://www.opengis.net/ont/geosparql#">
 
+<foaf:PersonalProfileDocument rdf:about="http://localhost/TubesWS/Komodo.rdf">
+    <rdfs:label>Komodo</rdfs:label>
+    <foaf:maker rdf:resource="http://localhost/TubesWS/"/>
+    <foaf:primaryTopic rdf:resource="http://localhost/TubesWS/"/>
+</foaf:PersonalProfileDocument>
+
 <rdf:Description rdf:about="http://dbpedia.org/resource/Komodo_dragon">
     <dbp:rangeMap rdf:resource="http://upload.wikimedia.org/wikipedia/commons/4/4c/Komodo_dragon_distribution.gif"/>
     <dbo:number>2430</dbo:number>

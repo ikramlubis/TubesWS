@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<rdf:RDF
+xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+xmlns:dbo="http://dbpedia.org/ontology/"
+xmlns:dbr="http://dbpedia.org/resource/"
+xmlns:dbp="http://dbpedia.org/property/"
+xmlns:geo="http://www.opengis.net/ont/geosparql#">
+
+<rdf:Description rdf:about="http://dbpedia.org/resource/Komodo_dragon">
+    <dbp:rangeMap rdf:resource="http://upload.wikimedia.org/wikipedia/commons/4/4c/Komodo_dragon_distribution.gif"/>
+    <dbo:number>2430</dbo:number>
+    <dbo:number>2884</dbo:number>
+    <dbo:number>2897</dbo:number>
+    <dbo:number>3023</dbo:number>
+    <dbo:number>3163</dbo:number>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://en.wikipedia.org/wiki/Komodo_National_Park">
+    <geo:lat>-8.527716540432161</geo:lat>
+    <geo:long>119.48331986250304</geo:long>
+    <dbp:name>Komodo National Park</dbp:name>
+</rdf:Description>
+
+</rdf:RDF>

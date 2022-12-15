@@ -108,12 +108,12 @@ google.charts.setOnLoadCallback(drawMaterial);
 
 function drawMaterial() {
       var data = google.visualization.arrayToDataTable([
-        ['Year', 'Population', { role: 'style' }],
-        ['2016', <?= $rdf['populasi1'] ?>, 'color: #FD1D05'],
-        ['2017', <?= $rdf['populasi2'] ?>, 'color: #FD7505'],
-        ['2018', <?= $rdf['populasi3'] ?>, 'color: #FAFD05'],
-        ['2019', <?= $rdf['populasi4'] ?>, 'color: #77FD05'],
-        ['2020', <?= $rdf['populasi5'] ?>, 'color: #20FD05']
+        ['Year', 'Population',],
+        ['2016', <?= $rdf['populasi1'] ?>,],
+        ['2017', <?= $rdf['populasi2'] ?>,],
+        ['2018', <?= $rdf['populasi3'] ?>,],
+        ['2019', <?= $rdf['populasi4'] ?>,],
+        ['2020', <?= $rdf['populasi5'] ?>,]
       ]);
 
       var materialOptions = {

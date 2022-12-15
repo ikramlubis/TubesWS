@@ -13,7 +13,7 @@ xmlns:geo="http://www.opengis.net/ont/geosparql#">
     <foaf:primaryTopic rdf:resource="http://localhost/TubesWS/"/>
 </foaf:PersonalProfileDocument>
 
-<rdf:Description rdf:about="http://dbpedia.org/resource/Komodo_dragon">
+<rdf:Description rdf:about="http://localhost/TubesWS/">
     <dbp:rangeMap rdf:resource="http://upload.wikimedia.org/wikipedia/commons/4/4c/Komodo_dragon_distribution.gif"/>
     <dbo:number>2430</dbo:number>
     <dbo:number>2884</dbo:number>

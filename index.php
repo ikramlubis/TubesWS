@@ -1,47 +1,19 @@
 <?php
 //-------------------------------Inisialisasi Setting rdf/rdf--------------------------------
 require 'vendor/autoload.php';
-require_once 'html_tag_helpers.php';
 //-------------------------------Inisialisasi arah sparql untuk dbpedia akan dijalankan--------------------
 $sparql_endpoint = 'https://dbpedia.org/sparql';
 $sparql_dbpedia = new \EasyRdf\Sparql\Client($sparql_endpoint);
 //-------------------------------Inisialisasi arah sparql untuk rdf (jena fuseki) akan dijalankan----------
 $sparql_jena = new \EasyRdf\Sparql\Client('http://localhost:3030/komodo/query');
-
-\EasyRdf\RdfNamespace::set('rdf', 'http://www.w3.org/1999/02/22-rdf-syntax-ns#');
-\EasyRdf\RdfNamespace::set('rdfs', 'http://www.w3.org/2000/01/rdf-schema#');
-\EasyRdf\RdfNamespace::set('dbp', 'http://dbpedia.org/property/');
-\EasyRdf\RdfNamespace::set('dbo', 'http://dbpedia.org/ontology/');
-\EasyRdf\RdfNamespace::set('dbr', 'http://dbpedia.org/resource/');
-\EasyRdf\RdfNamespace::set('rdfs', 'http://www.w3.org/2000/01/rdf-schema#');
-\EasyRdf\RdfNamespace::set('xsd', 'http://www.w3.org/2001/XMLSchema#');
-\EasyRdf\RdfNamespace::set('geo', 'http://www.opengis.net/ont/geosparql#');
-\EasyRdf\RdfNamespace::set('foaf', 'http://xmlns.com/foaf/0.1/');
-\EasyRdf\RdfNamespace::set('dc', 'http://purl.org/dc/elements/1.1/');
-\EasyRDf\RdfNamespace::setDefault('og');
-
-//---------------------------------Mengambil RDF LANGSUNG-------------------------------------------------
-$uri_rdf = 'http://localhost/TubesWS/Komodo.rdf';
-    $data = \EasyRdf\Graph::newAndLoad($uri_rdf);
-    $doc = $data->primaryTopic();
-//---------------------------------Mengambil isi tag dc:source dan foaf:homepage di Komodo.rdf-------------    
-    $project_url1 = $doc->get('dc:source');
-    $project_url2 = $doc->get('foaf:homepage'); 
-
-    $ogp1 = \EasyRdf\Graph::newAndLoad($project_url1);
-    $ogp2 = \EasyRdf\Graph::newAndLoad($project_url2);
-    
-
 //-------------------------------Setting namespace--------------------------------------------------------
-\EasyRdf\RdfNamespace::set('rdf', 'http://www.w3.org/1999/02/22-rdf-syntax-ns#');
-\EasyRdf\RdfNamespace::set('rdfs', 'http://www.w3.org/2000/01/rdf-schema#');
 \EasyRdf\RdfNamespace::set('dbp', 'http://dbpedia.org/property/');
 \EasyRdf\RdfNamespace::set('dbo', 'http://dbpedia.org/ontology/');
 \EasyRdf\RdfNamespace::set('dbr', 'http://dbpedia.org/resource/');
+\EasyRdf\RdfNamespace::set('rdf', 'http://www.w3.org/1999/02/22-rdf-syntax-ns#');
 \EasyRdf\RdfNamespace::set('rdfs', 'http://www.w3.org/2000/01/rdf-schema#');
 \EasyRdf\RdfNamespace::set('xsd', 'http://www.w3.org/2001/XMLSchema#');
 \EasyRdf\RdfNamespace::set('geo', 'http://www.opengis.net/ont/geosparql#');
-\EasyRdf\RdfNamespace::set('foaf', 'http://xmlns.com/foaf/0.1/');
 \EasyRDf\RdfNamespace::setDefault('og');
 //-------------------------------Query untuk mengambil gambar, deskripsi, gambar komodo dari DBpedia-----------
 $query_dbpedia = "
@@ -127,6 +99,10 @@ foreach ($result_rdf2 as $row)
 <html>
 
 <head>
+    <!-----------------------------------Cascading Style Sheet------------------------------------->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
 
     <!--------------------------------Setting leaflet.js------------------------------------------->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
@@ -181,10 +157,6 @@ foreach ($result_rdf2 as $row)
         #chart_div {
             width: 500px;
         }
-        .card-img {
-            width: 100%;
-            object-fit: cover; 
-        }
     </style>
 </head>
 
@@ -229,29 +201,22 @@ foreach ($result_rdf2 as $row)
             <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
                 <div class="col">
                     <div class="card shadow text-light h-100">
-                        <img src="<?= $ogp1->image ?>" class="card-img h-100 w-100" alt="...">
+                        <img src="../TubesWS/src/images/sports.jpg" class="card-img h-100 w-100" alt="...">
                         <div class="card-img-overlay">
-                            <h5 class="card-title ">OGP DBpedia</h5>
-<!---------------------------------------Mengambil OGP menggunakan $ogp->isi---------------------------->
+                            <h5 class="card-title">The Bookworm</h5>
                             <p class="card-text">
-                                <!-- Delve into the ocean of knowledge -->
-                                <p><?= $ogp1->title ?><p>
-                                <p>Sumber: <a href="<?= $ogp1->url ?>" target="_blank"><?= $ogp1->site_name ?></a></p>
+                                Delve into the ocean of knowledge
                             </p>
                         </div>
                     </div>
                 </div>
                 <div class="col">
                     <div class="card shadow text-light text-center h-100">
-                        <img src="<?= $ogp2->image ?>" style="width:100%;" class="card-img h-100 w-100" alt="...">
+                        <img src="../TubesWS/src/images/windmill_nightscape.png" class="card-img h-100 w-100" alt="...">
                         <div class="card-img-overlay d-flex flex-column justify-content-center">
-                                <!-- Explore the billion star hotel -->
-                                <h5 class="card-title">OGP Youtube</h5>
-                                <p class="card-text">
-                                <!-- Delve into the ocean of knowledge -->
-                                <p><?= $ogp2->title ?><p>
-                                <p>Sumber: <a href="<?= $ogp2->url ?>" target="_blank"><?= $ogp2->site_name ?></a></p>
-                            </p>
+                            <h5 class="card-title">The NightSky</h5>
+                            <p class="card-text">
+                                Explore the billion star hotel
                             </p>
                         </div>
                     </div>
@@ -269,18 +234,33 @@ foreach ($result_rdf2 as $row)
         </div>
     </section>
 
+    <div class="container py-5">
+        <div class="row">
+            <div class="col-lg-4" id="chart_div"></div>
+            <div class="container col-lg-5" id="map"></div>
+        </div>
+    </div>
 
+    <section class="bg-black">
+        <div class="container py-5">
+            <div class="row">
+                <div class="shadow text-white h-100">
+                    <h5>The Bookworm</h5>
+                    <p class="card-text">
+                    <?php echo $dbpedia['deskripsi']; ?>
+                    </p>
+                </div>
+            </div><br><br>
+            <div class="row">
+                <?php echo "<img src=" . $rdf['peta'] . ">"; //Memanggil gambar distribusi komodo
+                echo "<br>";
+                ?>
+            </div>
+        </div>
+    </section>
 
-    <div id="map"></div>
-    <div id="chart_div"></div>
-
-<?php echo $dbpedia['deskripsi']; 
-echo "<img src=" . $rdf['peta'] . ">"; //Memanggil gambar distribusi komodo
-echo "<br>";
-?>
-
-
-
+    
+        
 
 
     <!------------------------------------Inisialisasi Mapbox------------------------------------>

@@ -5,7 +5,10 @@ xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 xmlns:dbo="http://dbpedia.org/ontology/"
 xmlns:dbr="http://dbpedia.org/resource/"
 xmlns:dbp="http://dbpedia.org/property/"
-xmlns:geo="http://www.opengis.net/ont/geosparql#">
+xmlns:geo="http://www.opengis.net/ont/geosparql#"
+xmlns:dc="http://purl.org/dc/elements/1.1/"
+xmlns:foaf="http://xmlns.com/foaf/0.1/"
+xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
 
 <foaf:PersonalProfileDocument rdf:about="http://localhost/TubesWS/Komodo.rdf">
     <rdfs:label>Komodo</rdfs:label>
@@ -20,6 +23,8 @@ xmlns:geo="http://www.opengis.net/ont/geosparql#">
     <dbo:number>2897</dbo:number>
     <dbo:number>3023</dbo:number>
     <dbo:number>3163</dbo:number>
+    <foaf:homepage rdf:resource="https://youtu.be/28FzV5OHqMU"/>
+    <dc:source rdf:resource="https://dbpedia.org/page/Komodo_dragon"/>
 </rdf:Description>
 
 <rdf:Description rdf:about="http://en.wikipedia.org/wiki/Komodo_National_Park">
@@ -27,5 +32,7 @@ xmlns:geo="http://www.opengis.net/ont/geosparql#">
     <geo:long>119.48331986250304</geo:long>
     <dbp:name>Komodo National Park</dbp:name>
 </rdf:Description>
+
+
 
 </rdf:RDF>

@@ -20,12 +20,14 @@ $sparql_jena = new \EasyRdf\Sparql\Client('http://localhost:3030/komodo/query');
 \EasyRdf\RdfNamespace::set('dc', 'http://purl.org/dc/elements/1.1/');
 \EasyRDf\RdfNamespace::setDefault('og');
 
+//---------------------------------Mengambil RDF LANGSUNG-------------------------------------------------
 $uri_rdf = 'http://localhost/TubesWS/Komodo.rdf';
     $data = \EasyRdf\Graph::newAndLoad($uri_rdf);
     $doc = $data->primaryTopic();
-    
+//---------------------------------Mengambil isi tag dc:source dan foaf:homepage di Komodo.rdf-------------    
     $project_url1 = $doc->get('dc:source');
     $project_url2 = $doc->get('foaf:homepage'); 
+
     $ogp1 = \EasyRdf\Graph::newAndLoad($project_url1);
     $ogp2 = \EasyRdf\Graph::newAndLoad($project_url2);
     
@@ -230,6 +232,7 @@ foreach ($result_rdf2 as $row)
                         <img src="<?= $ogp1->image ?>" class="card-img h-100 w-100" alt="...">
                         <div class="card-img-overlay">
                             <h5 class="card-title ">OGP DBpedia</h5>
+<!---------------------------------------Mengambil OGP menggunakan $ogp->isi---------------------------->
                             <p class="card-text">
                                 <!-- Delve into the ocean of knowledge -->
                                 <p><?= $ogp1->title ?><p>

@@ -34,6 +34,7 @@ $query_dbpedia = "
         ?hewan rdfs:label 'Komodo dragon'@en.
         ?hewan dbo:abstract ?deskripsi.
         ?hewan dbo:thumbnail ?gambar.
+        ?hewan dbp:name ?nama.
         FILTER( LANG (?deskripsi) = 'en')
         }";
 
@@ -45,6 +46,7 @@ foreach ($result_dbpedia as $row)
     $dbpedia = [
         'deskripsi' => $row->deskripsi, //Deskripsi Komodo
         'gambar' => $row->gambar, //Gambar Komodo
+        'nama' => $row->nama,
     ];
 
     break;
@@ -170,6 +172,10 @@ foreach ($result_rdf2 as $row)
         #chart_div {
             width: 500px;
         }
+        .card-img {
+            width: 100%;
+            object-fit: cover; 
+        }
     </style>
 </head>
 
@@ -214,22 +220,25 @@ foreach ($result_rdf2 as $row)
             <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
                 <div class="col">
                     <div class="card shadow text-light h-100">
-                        <img src="../TubesWS/src/images/sports.jpg" class="card-img h-100 w-100" alt="...">
+                        <img src="<?= $ogp1->image ?>" class="card-img h-100 w-100" alt="...">
                         <div class="card-img-overlay">
-                            <h5 class="card-title">The Bookworm</h5>
+                            <h5 class="card-title"><?= $ogp1->site_name ?></h5>
                             <p class="card-text">
-                                Delve into the ocean of knowledge
+                            <p>
+                                <?= $ogp1->title ?><p>
+                                <p>Sumber: <a href="<?= $ogp1->url ?>" target="_blank"><?= $ogp1->site_name ?></a></p>
                             </p>
                         </div>
                     </div>
                 </div>
                 <div class="col">
                     <div class="card shadow text-light text-center h-100">
-                        <img src="../TubesWS/src/images/windmill_nightscape.png" class="card-img h-100 w-100" alt="...">
+                        <img src="<?= $ogp2->image ?>" class="card-img h-100 w-100" alt="...">
                         <div class="card-img-overlay d-flex flex-column justify-content-center">
-                            <h5 class="card-title">The NightSky</h5>
+                            <h5 class="card-title"><?= $ogp2->site_name ?></h5>
                             <p class="card-text">
-                                Explore the billion star hotel
+                                <?= $ogp2->title ?>
+                                <p>Sumber: <a href="<?= $ogp2->url ?>" target="_blank"><?= $ogp2->site_name ?></a></p>
                             </p>
                         </div>
                     </div>
@@ -258,7 +267,7 @@ foreach ($result_rdf2 as $row)
         <div class="container py-5">
             <div class="row">
                 <div class="shadow text-white h-100">
-                    <h5>The Bookworm</h5>
+                    <h5><?= $dbpedia['nama'] ?></h5>
                     <p class="card-text">
                     <?php echo $dbpedia['deskripsi']; ?>
                     </p>

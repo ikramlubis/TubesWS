@@ -7,14 +7,27 @@ $sparql_dbpedia = new \EasyRdf\Sparql\Client($sparql_endpoint);
 //-------------------------------Inisialisasi arah sparql untuk rdf (jena fuseki) akan dijalankan----------
 $sparql_jena = new \EasyRdf\Sparql\Client('http://localhost:3030/komodo/query');
 //-------------------------------Setting namespace--------------------------------------------------------
+\EasyRdf\RdfNamespace::set('rdf', 'http://www.w3.org/1999/02/22-rdf-syntax-ns#');
+\EasyRdf\RdfNamespace::set('rdfs', 'http://www.w3.org/2000/01/rdf-schema#');
 \EasyRdf\RdfNamespace::set('dbp', 'http://dbpedia.org/property/');
 \EasyRdf\RdfNamespace::set('dbo', 'http://dbpedia.org/ontology/');
 \EasyRdf\RdfNamespace::set('dbr', 'http://dbpedia.org/resource/');
-\EasyRdf\RdfNamespace::set('rdf', 'http://www.w3.org/1999/02/22-rdf-syntax-ns#');
-\EasyRdf\RdfNamespace::set('rdfs', 'http://www.w3.org/2000/01/rdf-schema#');
 \EasyRdf\RdfNamespace::set('xsd', 'http://www.w3.org/2001/XMLSchema#');
 \EasyRdf\RdfNamespace::set('geo', 'http://www.opengis.net/ont/geosparql#');
+\EasyRdf\RdfNamespace::set('foaf', 'http://xmlns.com/foaf/0.1/');
+\EasyRdf\RdfNamespace::set('dc', 'http://purl.org/dc/elements/1.1/');
 \EasyRDf\RdfNamespace::setDefault('og');
+
+//---------------------------------Mengambil RDF LANGSUNG-------------------------------------------------
+$uri_rdf = 'http://localhost/TubesWS/Komodo.rdf';
+    $data = \EasyRdf\Graph::newAndLoad($uri_rdf);
+    $doc = $data->primaryTopic();
+//---------------------------------Mengambil isi tag dc:source dan foaf:homepage di Komodo.rdf-------------    
+    $project_url1 = $doc->get('dc:source');
+    $project_url2 = $doc->get('foaf:homepage'); 
+
+    $ogp1 = \EasyRdf\Graph::newAndLoad($project_url1);
+    $ogp2 = \EasyRdf\Graph::newAndLoad($project_url2);
 //-------------------------------Query untuk mengambil gambar, deskripsi, gambar komodo dari DBpedia-----------
 $query_dbpedia = "
         Select * WHERE {

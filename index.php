@@ -197,14 +197,6 @@ foreach ($result_rdf2 as $row)
                         <h5 class=" font-weight-normal">
                             Satwa langka 
                         </h5>
-                        <div class="">
-                            <div class="btn btn btn-primary">
-                                Subscribe now
-                            </div>
-                            <div class="btn btn ml-3 btn-primary">
-                                Learn more
-                            </div>
-                        </div>
                     </div>
                 </div>
                 <div class="col-lg-5 mt-3 mt-lg-0 ">

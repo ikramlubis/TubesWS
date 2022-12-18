@@ -166,15 +166,6 @@ foreach ($result_rdf2 as $row)
     <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
     <style>
-        #map {
-            width: 700px;
-            height: 400px;
-        }
-
-        #chart_div {
-            width: 600px;
-            height: 400px;
-        }
         .card-img {
             width: 100%;
             object-fit: cover; 
@@ -229,17 +220,13 @@ foreach ($result_rdf2 as $row)
 
     <div class="container py-3">
         <div class="row">
-            <div class="col-lg-4" id="chart_div"></div>
+            <div class="col-lg-6" style="height: 30rem;" id="chart_div">  
+            </div>
+            <div class="col-lg-6" style="height: 30rem;" id="map">
+            </div>
         </div>
     </div>
 
-    <div class="container py-3">
-        <div class="row">
-            <div class="col-lg-4" id="map"></div>
-        </div>
-    </div>
-
- 
     <section class="bg-grblue">
         <div class="container py-5">
             <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">

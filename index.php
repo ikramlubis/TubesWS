@@ -252,7 +252,7 @@ foreach ($result_rdf2 as $row)
                             <h5 class="card-title"><?= $ogp3->site_name ?></h5>
                             <p class="card-text">
                             <?= $ogp3->title ?>
-                                <p>Sumber: <a href="<?= $ogp3->url ?>" target="_blank"><?= $ogp3->site_name ?></a></p>
+                                <p>Sumber: <a href="<?= $doc->get('geo:loc') ?>" target="_blank">Wikipedia</a></p>
                             </p>
                         </div>
                     </div>

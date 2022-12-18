@@ -294,11 +294,11 @@ foreach ($result_rdf2 as $row)
     <script>
         var map = L.map('map').setView([<?= $rdf2['lat'] . "," . $rdf2['long'] ?>], 10);
 
-        L.tileLayer('https://api.maptiler.com/maps/streets-v2/{z}/{x}/{y}.png?key=R502YF4wURp0CyIf120D', {
+        L.tileLayer('https://api.maptiler.com/maps/openstreetmap/{z}/{x}/{y}.jpg?key=R502YF4wURp0CyIf120D', {
             attribution: '<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>',
         }).addTo(map);
 
-        var marker = L.marker([<?= $rdf2['lat'] . "," . $rdf2['long'] ?>]).addTo(map).bindPopup('<?= $rdf2['name'] ?>.')
+        var marker = L.marker([<?= $rdf2['lat'] . "," . $rdf2['long'] ?>]).addTo(map).bindPopup('<?= $rdf2['name'] ?>. <br> <p> <?= $doc->get('rdfs:comment') ?> </p>')
             .openPopup();
     </script>
     <!------------------------------------------------------------------------------------------->

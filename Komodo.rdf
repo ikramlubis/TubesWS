@@ -32,6 +32,7 @@ xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
     <geo:lat>-8.527716540432161</geo:lat>
     <geo:long>119.48331986250304</geo:long>
     <dbp:name>Komodo National Park</dbp:name>
+    <rdfs:comment>Expansive national park that aims to protect endangered Komodo dragons and other wildlife.</rdfs:comment>
 </rdf:Description>
 
 

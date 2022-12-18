@@ -119,7 +119,7 @@ foreach ($result_rdf2 as $row)
     <!-----------------------------------Cascading Style Sheet------------------------------------->
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="src/images/css/style.css">
 
     <!--------------------------------Setting leaflet.js------------------------------------------->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
@@ -172,7 +172,8 @@ foreach ($result_rdf2 as $row)
         }
 
         #chart_div {
-            width: 500px;
+            width: 600px;
+            height: 400px;
         }
         .card-img {
             width: 100%;
@@ -181,47 +182,77 @@ foreach ($result_rdf2 as $row)
     </style>
 </head>
 
-<body>
+<body class="bg-peachblue">
 
     <!-- HERO SECTION OF KOMODO DREGON -->
-    <section class="h-100">
+    <section class="h-100 bg-grblue">
         <div class="container h-100 py-5">
             <div class="row h-100 justify-content-between align-items-center">
                 <div class="col-lg-5 h-50">
-                    <div class="d-flex flex-column h-100 justify-content-between text-center text-lg-left">
-                        <h5>Semantic Web Pedia</h5>
+                    <div class="card bg-blueyellow d-flex flex-column h-100 justify-content-between text-center text-lg-left">
+                        <!-- <h5>Semantic Web Pedia</h5> -->
                         <h1 class="font-weight-bold">
                             Komodo
                         </h1>
-                        <h5 class="text-muted font-weight-normal">
+                        <h5 class=" font-weight-normal">
                             Satwa langka 
                         </h5>
                         <div class="">
                             <div class="btn btn btn-primary">
                                 Subscribe now
                             </div>
-                            <div class="btn btn ml-3 btn-outline-primary">
+                            <div class="btn btn ml-3 btn-primary">
                                 Learn more
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-5 mt-3 mt-lg-0">
+                <div class="col-lg-5 mt-3 mt-lg-0 ">
                     <?php
-                        echo "<img src=" . $dbpedia['gambar'] . " class='h-100 w-100'>"; 
+                        echo "<img src=" . $dbpedia['gambar'] . " class='h-100 w-100 opac-80 hover'>"; 
                     ?>
                 </div>
             </div>
         </div>
     </section>
 
+    <section class="bg-black">
+        <div class="container py-5">
+            <div class="row">
+                <div class="shadow text-white h-100">
+                    <h5><?= $dbpedia['nama'] ?></h5>
+                    <p class="card-text">&emsp;
+                    <?php echo $dbpedia['deskripsi']; ?>
+                    </p>
+                </div>
+            </div><br><br>
+            <div class="row">
+                <?php echo "<img src=" . $rdf['peta'] . ">"; //Memanggil gambar distribusi komodo
+                echo "<br>";
+                ?>
+            </div>
+        </div>
+    </section>
 
 
-    <section class="bg-white">
+    <div class="container py-3">
+        <div class="row">
+            <div class="col-lg-4" id="chart_div"></div>
+        </div>
+    </div>
+
+    <div class="container py-3">
+        <div class="row">
+            <div class="col-lg-4" id="map"></div>
+        </div>
+    </div>
+
+ 
+    <section class="bg-grblue">
         <div class="container py-5">
             <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
                 <div class="col">
-                    <div class="card shadow text-light h-100">
+                    <div class="card shadow text-light h-100 opac-80">
                         <img src="<?= $ogp1->image ?>" class="card-img h-100 w-100" alt="...">
                         <div class="card-img-overlay">
                             <h5 class="card-title"><?= $ogp1->site_name ?></h5>
@@ -234,7 +265,7 @@ foreach ($result_rdf2 as $row)
                     </div>
                 </div>
                 <div class="col">
-                    <div class="card shadow text-light text-center h-100">
+                    <div class="card shadow text-light text-center h-100 opac-80">
                         <img src="<?= $ogp2->image ?>" class="card-img h-100 w-100" alt="...">
                         <div class="card-img-overlay d-flex flex-column justify-content-center">
                             <h5 class="card-title"><?= $ogp2->site_name ?></h5>
@@ -246,42 +277,17 @@ foreach ($result_rdf2 as $row)
                     </div>
                 </div>
                 <div class="col">
-                    <div class="card shadow text-light text-right h-100">
+                    <div class="card shadow text-light text-right h-100 opac-80">
                         <img src="<?= $ogp3->image ?>" class="card-img h-100 w-100" alt="...">
                         <div class="card-img-overlay d-flex flex-column justify-content-end">
                             <h5 class="card-title"><?= $ogp3->site_name ?></h5>
                             <p class="card-text">
                             <?= $ogp3->title ?>
-                                <p>Sumber: <a href="<?= $doc->get('geo:loc') ?>" target="_blank">Wikipedia</a></p>
+                            <p>Sumber: <a href="<?= $doc->get('geo:loc') ?>" target="_blank">Wikipedia</a></p>
                             </p>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <div class="container py-5">
-        <div class="row">
-            <div class="col-lg-4" id="chart_div"></div>
-            <div class="container col-lg-5" id="map"></div>
-        </div>
-    </div>
-
-    <section class="bg-black">
-        <div class="container py-5">
-            <div class="row">
-                <div class="shadow text-white h-100">
-                    <h5><?= $dbpedia['nama'] ?></h5>
-                    <p class="card-text">
-                    <?php echo $dbpedia['deskripsi']; ?>
-                    </p>
-                </div>
-            </div><br><br>
-            <div class="row">
-                <?php echo "<img src=" . $rdf['peta'] . ">"; //Memanggil gambar distribusi komodo
-                echo "<br>";
-                ?>
             </div>
         </div>
     </section>

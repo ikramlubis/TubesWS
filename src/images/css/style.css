@@ -1,0 +1,48 @@
+
+.set-bg {
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: top center;
+}
+
+.bg-dblue{
+    background-color:#2f3094!important
+}
+
+.bg-blueyellow{
+    background: rgb(34,193,195);
+background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);
+}
+
+.bg-peachblue{
+    background: rgb(238,174,202);
+background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+}
+
+.bg-grblue{
+    background-image: linear-gradient(90deg, #020024 0%, #090979 35%, #00d4ff 100%);
+}
+
+.bg-grgreen{
+    background: rgb(38,88,57);
+background: linear-gradient(45deg, rgba(38,88,57,1) 0%, rgba(17,173,56,1) 27%, rgba(13,171,53,1) 65%, rgba(11,143,44,1) 93%, rgba(44,113,70,1) 100%);
+}
+
+.bg-rdgreen{
+    background: rgb(41,179,92);
+background: radial-gradient(circle, rgba(41,179,92,1) 41%, rgba(52,217,127,1) 79%);
+}
+
+.bg-brown{
+    background-color:#8c4e4e!important
+}
+
+.bg-green{
+    background-color:#478966!important
+}
+
+.opac-80{
+    opacity: 80%;}
+    .opac-80:hover{
+        opacity: 95%;
+    }

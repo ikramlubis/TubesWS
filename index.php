@@ -154,7 +154,7 @@ foreach ($result_rdf2 as $row)
                 vAxis: {
                     title: 'Year'
                 },
-                bars: 'vertical'
+                bars: 'horizontal'
             };
             var materialChart = new google.charts.Bar(document.getElementById('chart_div'));
             materialChart.draw(data, materialOptions);
@@ -167,12 +167,13 @@ foreach ($result_rdf2 as $row)
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
     <style>
         #map {
-            width: 700px;
-            height: 400px;
+            width: 100%;
+            height: 500px;
+            z-index: 0;
         }
 
         #chart_div {
-            width: 600px;
+            width: 100%;
             height: 400px;
         }
         .card-img {
@@ -213,14 +214,6 @@ foreach ($result_rdf2 as $row)
                         <h5 class=" font-weight-normal">
                             Satwa langka 
                         </h5>
-                        <div class="">
-                            <div class="btn btn btn-primary">
-                                Subscribe now
-                            </div>
-                            <div class="btn btn ml-3 btn-primary">
-                                Learn more
-                            </div>
-                        </div>
                     </div>
                 </div>
                 <div class="col-lg-5 mt-3 mt-lg-0 ">
@@ -250,18 +243,17 @@ foreach ($result_rdf2 as $row)
         </div>
     </section>
 
+    <section id="map">
 
+    </section>
+
+    <section>
     <div class="container py-3">
         <div class="row">
-            <div class="col-lg-4" id="chart_div"></div>
+            <div class="col-lg-4 my-5" id="chart_div"></div>
         </div>
     </div>
-
-    <div class="container py-3">
-        <div class="row">
-            <div class="col-lg-4" id="map"></div>
-        </div>
-    </div>
+    </section>
 
  
     <section class="bg-grblue">

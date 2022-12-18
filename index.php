@@ -25,9 +25,11 @@ $uri_rdf = 'http://localhost/TubesWS/Komodo.rdf';
 //---------------------------------Mengambil isi tag dc:source dan foaf:homepage di Komodo.rdf-------------    
     $project_url1 = $doc->get('dc:source');
     $project_url2 = $doc->get('foaf:homepage'); 
+    $project_url3 = $doc->get('geo:loc'); 
 
     $ogp1 = \EasyRdf\Graph::newAndLoad($project_url1);
     $ogp2 = \EasyRdf\Graph::newAndLoad($project_url2);
+    $ogp3 = \EasyRdf\Graph::newAndLoad($project_url3);
 //-------------------------------Query untuk mengambil gambar, deskripsi, gambar komodo dari DBpedia-----------
 $query_dbpedia = "
         Select * WHERE {
@@ -245,10 +247,13 @@ foreach ($result_rdf2 as $row)
                 </div>
                 <div class="col">
                     <div class="card shadow text-light text-right h-100">
-                        <img src="../TubesWS/src/images/sports.jpg" class="card-img h-100 w-100" alt="...">
+                        <img src="<?= $ogp3->image ?>" class="card-img h-100 w-100" alt="...">
                         <div class="card-img-overlay d-flex flex-column justify-content-end">
-                            <h5 class="card-title">The Speed Run</h5>
-                            <p class="card-text">Keep dem legs movin'</p>
+                            <h5 class="card-title"><?= $ogp3->site_name ?></h5>
+                            <p class="card-text">
+                            <?= $ogp3->title ?>
+                                <p>Sumber: <a href="<?= $ogp3->url ?>" target="_blank"><?= $ogp3->site_name ?></a></p>
+                            </p>
                         </div>
                     </div>
                 </div>

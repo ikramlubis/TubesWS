@@ -154,7 +154,7 @@ foreach ($result_rdf2 as $row)
                 vAxis: {
                     title: 'Year'
                 },
-                bars: 'vertical'
+                bars: 'horizontal'
             };
             var materialChart = new google.charts.Bar(document.getElementById('chart_div'));
             materialChart.draw(data, materialOptions);

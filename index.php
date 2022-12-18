@@ -173,7 +173,10 @@ foreach ($result_rdf2 as $row)
     </style>
 </head>
 
-<body class="bg-peachblue">
+<body class="bg-grblue">
+
+
+    
 
     <!-- HERO SECTION OF KOMODO DREGON -->
     <section class="h-100 bg-grblue">
@@ -199,7 +202,9 @@ foreach ($result_rdf2 as $row)
         </div>
     </section>
 
-    <section class="bg-black">
+    
+
+    <section class="bg-grblue">
         <div class="container py-5">
             <div class="row">
                 <div class="shadow text-white h-100">
@@ -216,16 +221,6 @@ foreach ($result_rdf2 as $row)
             </div>
         </div>
     </section>
-
-
-    <div class="container py-3">
-        <div class="row">
-            <div class="col-lg-6" style="height: 30rem;" id="chart_div">  
-            </div>
-            <div class="col-lg-6" style="height: 30rem;" id="map">
-            </div>
-        </div>
-    </div>
 
     <section class="bg-grblue">
         <div class="container py-5">
@@ -270,6 +265,17 @@ foreach ($result_rdf2 as $row)
             </div>
         </div>
     </section>
+
+
+
+    <div class="container py-3">
+        <div class="row">
+            <div class="col-lg-6" style="height: 30rem;" id="chart_div">  
+            </div>
+            <div class="col-lg-6" style="height: 30rem;" id="map">
+            </div>
+        </div>
+    </div>
 
     
         

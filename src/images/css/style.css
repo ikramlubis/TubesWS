@@ -24,10 +24,17 @@
 }
 
 .bg-grblue{
+    background: linear-gradient(90deg, #0c0c5a 20%, #633c2f 80%);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+}
+
+.bg-grdblue{
     background: linear-gradient(90deg, #200024 0%, #090979 35%, #00d4ff 100%);
     background-size: 400% 400%;
     animation: gradient 15s ease infinite;
 }
+
 
 .bg-grgreen{
     background: rgb(38,88,57);
